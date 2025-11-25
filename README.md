@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="logo" src="logo.svg" width="120">
+  <img alt="logo" src="public/logo.svg" width="80">
   <h1>platform-compat-screen</h1>
   <p><strong>Device-targeted blocking and warning overlays</strong></p>
   <p>A minimal library for showing platform compatibility screens - blocking or warning overlays for mobile/desktop devices.</p>
