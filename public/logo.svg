@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16.534388"
+   height="18.371544"
+   viewBox="0 0 16.534388 18.371544"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1">
+      <stop
+         style="stop-color:#21b497;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#43ddc4;stop-opacity:1;"
+         offset="0.99660438"
+         id="stop2" />
+    </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient1"
+       id="radialGradient2"
+       cx="12"
+       cy="12"
+       fx="12"
+       fy="12"
+       r="9"
+       gradientTransform="matrix(0.9185772,0,0,1.0206413,-2.7557316,-3.0619239)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     fill="currentColor"
+     fill-rule="evenodd"
+     d="M 0.87724114,1.8931876 C 2.5354157e-8,3.100198 2.5354157e-8,4.8234488 2.5354157e-8,8.2671947 V 10.10435 c 0,3.444664 0,5.166996 0.877241114645843,6.374007 a 4.592886,4.592886 0 0 0 1.01594636,1.015946 c 1.2070105,0.877241 2.9302612,0.877241 6.3740071,0.877241 3.4437444,0 5.1669954,0 6.3740064,-0.877241 a 4.592886,4.592886 0 0 0 1.015946,-1.015946 c 0.877241,-1.207011 0.877241,-2.930261 0.877241,-6.374007 V 8.2671947 c 0,-3.4446644 0,-5.1669967 -0.877241,-6.3740071 A 4.592886,4.592886 0 0 0 14.641201,0.8772413 C 13.43419,0 11.710939,0 8.2671946,0 4.8234487,0 3.100198,0 1.8931875,0.8772413 A 4.592886,4.592886 0 0 0 0.87724114,1.8922691 M 3.6743088,5.7411074 a 0.6889329,0.6889329 0 0 0 0,1.3778658 h 9.1857702 a 0.6889329,0.6889329 0 0 0 0,-1.3778658 z M 8.8054809,10.535162 A 0.68917064,0.68917064 0 0 0 7.7289085,9.674455 l -1.8371544,2.296443 a 0.68893289,0.68893289 0 0 0 0.5382862,1.118827 H 8.6713687 L 7.7289085,14.267342 A 0.68893289,0.68893289 0 1 0 8.8054809,15.12713 L 10.642634,12.830687 A 0.68893289,0.68893289 0 0 0 10.104348,11.711859 H 7.8630207 Z"
+     clip-rule="evenodd"
+     id="path1"
+     style="fill:url(#radialGradient2);stroke:none;stroke-width:0.918577;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+</svg>

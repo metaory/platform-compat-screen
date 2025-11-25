@@ -1,0 +1,245 @@
+---
+import { Code } from 'astro:components';
+import '../../lib/style.css';
+import '../../public/demo.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Platform Compat Screen - Demo</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  </head>
+  <body>
+    <header>
+      <img
+        src="/logo.svg"
+        alt="Platform Compat Screen"
+        width="120"
+        height="120"
+        style="margin-bottom: 1rem"
+      />
+      <h1>Platform Compat Screen</h1>
+      <p class="subtitle">
+        Device-targeted blocking and warning overlays
+      </p>
+    </header>
+    <main>
+      <section>
+        <h2>Installation</h2>
+        <div class="example">
+          <h3>NPM (Source Files)</h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code="npm install platform-compat-screen" lang="bash" theme="solarized-light" />
+          </div>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code="import platformCompatScreen from 'platform-compat-screen'" lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+        <div class="example">
+          <h3>CDN (Unpkg)</h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`<link
+  rel="stylesheet"
+  href="https://unpkg.com/platform-compat-screen@latest/lib/style.css">
+<script
+  type="module"
+  src="https://unpkg.com/platform-compat-screen@latest/lib/cdn.js?mobile=true&mode=block"></script>`} lang="html" theme="solarized-light" />
+          </div>
+          <div class="info">
+            <strong>Query Parameters:</strong>
+            <ul style="margin-top: 0.5rem; padding-left: 1.5rem">
+              <li><code>mobile=true</code> - Target mobile devices</li>
+              <li><code>desktop=true</code> - Target desktop devices</li>
+              <li>
+                <code>mode=block</code> or <code>mode=warn</code> - Overlay mode
+              </li>
+              <li>
+                <code>message=Your%20message</code> - Custom message (URL
+                encoded)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>API Reference</h2>
+        <div class="code-wrapper">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          <Code code={`platformCompatScreen(options)
+
+// options object:
+{
+  // Overlay behavior: 'block' shows non-dismissible overlay,
+  // 'warn' shows dismissible warning
+  // default: 'block'
+  mode: 'block' | 'warn'
+
+  // Device type to target. Determines when overlay is shown
+  // default: 'mobile'
+  target: 'mobile' | 'desktop' | 'both'
+
+  // Message displayed to users
+  // default: 'This application is not compatible with your device.'
+  message: string
+
+  // Text displayed on dismiss button (only used in 'warn' mode)
+  // default: 'Dismiss'
+  dismissText: string
+}`} lang="javascript" theme="solarized-light" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Interactive Examples</h2>
+        <p class="device-badge">Your device: <span id="device-type">detecting...</span></p>
+        <div class="example" data-target="mobile">
+          <h3>Block Mode (Mobile) <span class="hint"></span> <button onclick="testBlockMobile()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'block',
+  target: 'mobile',
+  message: 'This app requires a desktop device.'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+
+        <div class="example" data-target="mobile">
+          <h3>Warn Mode (Mobile) <span class="hint"></span> <button onclick="testWarnMobile()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'warn',
+  target: 'mobile',
+  message: 'This app works better on desktop.'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+
+        <div class="example" data-target="desktop">
+          <h3>Block Mode (Desktop) <span class="hint"></span> <button onclick="testBlockDesktop()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'block',
+  target: 'desktop',
+  message: 'This app requires a mobile device.'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+
+        <div class="example" data-target="desktop">
+          <h3>Warn Mode (Desktop) <span class="hint"></span> <button onclick="testWarnDesktop()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'warn',
+  target: 'desktop',
+  message: 'This app works better on mobile.'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+
+        <div class="example" data-target="both">
+          <h3>Custom Message <span class="hint"></span> <button onclick="testCustomMessage()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'warn',
+  target: 'both',
+  message: 'Your device may not be fully supported.'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+
+        <div class="example" data-target="both">
+          <h3>Custom Dismiss Text <span class="hint"></span> <button onclick="testCustomDismissText()">Test</button></h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`import platformCompatScreen from 'platform-compat-screen'
+
+platformCompatScreen({
+  mode: 'warn',
+  target: 'both',
+  message: 'This app works best on desktop.',
+  dismissText: 'Got it'
+})`} lang="javascript" theme="solarized-light" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>CSS Customization</h2>
+        <div class="example">
+          <h3>Override Design Tokens</h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <Code code={`:root {
+  --pcs-bg: rgba(0, 0, 0, 0.6);
+  --pcs-bg-blur: 20px;
+  --pcs-text: #ffffff;
+  --pcs-button-bg: rgba(255, 255, 255, 0.9);
+  --pcs-button-text: #000000;
+  --pcs-padding: 2rem;
+  --pcs-gap: 1.5rem;
+  --pcs-font-size: 1.125rem;
+  --pcs-title-size: 1.5rem;
+  --pcs-title-weight: 600;
+  --pcs-border-radius: 1rem;
+  --pcs-z-index: 9999;
+}`} lang="css" theme="solarized-light" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      import platformCompatScreen, { detectDevice } from '../../lib/index.js';
+
+      const device = detectDevice();
+      document.getElementById('device-type').textContent = device;
+
+      document.querySelectorAll('.example[data-target]').forEach(el => {
+        const { target } = el.dataset;
+        const active = target === 'both' || target === device;
+        const hint = el.querySelector('.hint');
+        hint.textContent = active ? '✓ Will trigger' : `Targets ${target}`;
+        hint.classList.add(active ? 'active' : 'inactive');
+      });
+
+      [
+        ['testBlockMobile', { mode: 'block', target: 'mobile', message: 'This app requires a desktop device.' }],
+        ['testWarnMobile', { mode: 'warn', target: 'mobile', message: 'This app works better on desktop.' }],
+        ['testBlockDesktop', { mode: 'block', target: 'desktop', message: 'This app requires a mobile device.' }],
+        ['testWarnDesktop', { mode: 'warn', target: 'desktop', message: 'This app works better on mobile.' }],
+        ['testCustomMessage', { mode: 'warn', target: 'both', message: 'Your device may not be fully supported.' }],
+        ['testCustomDismissText', { mode: 'warn', target: 'both', message: 'This app works best on desktop.', dismissText: 'Got it' }],
+      ].map(([name, config]) => window[name] = () => platformCompatScreen(config));
+
+      window.copyCode = (btn) => {
+        const text = btn.nextElementSibling.querySelector('code')?.textContent || '';
+        navigator.clipboard.writeText(text).then(
+          () => { btn.textContent = 'Copied!'; btn.classList.add('copied'); },
+          () => { btn.textContent = 'Error'; }
+        );
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      };
+    </script>
+  </body>
+</html>

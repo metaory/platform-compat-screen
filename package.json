@@ -1,0 +1,37 @@
+{
+  "name": "platform-compat-screen",
+  "version": "0.0.0",
+  "description": "Device-targeted blocking and warning overlays",
+  "author": "metaory",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metaory/platform-compat-screen.git"
+  },
+  "homepage": "https://metaory.github.io/platform-compat-screen",
+  "keywords": ["platform", "compatibility", "mobile", "desktop", "overlay", "screen", "gate"],
+  "type": "module",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js"
+    },
+    "./cdn": {
+      "import": "./lib/cdn.js"
+    },
+    "./style.css": "./lib/style.css"
+  },
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^5.16.0"
+  }
+}
