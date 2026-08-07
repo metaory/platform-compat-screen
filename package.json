@@ -32,6 +32,6 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^5.16.0"
+    "astro": "^7.1.1"
   }
 }
